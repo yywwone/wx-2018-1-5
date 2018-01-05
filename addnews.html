@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发表</title>
+    <link href="./css/reset.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+       /* body{
+            background-color: #f2f2f2;
+        }*/
+        .box {
+            width: 100%;
+            border-bottom: 20px solid #f2f2f2;
+        }
+        textarea {
+            width:100%;
+            height:1.6rem;
+            border:none;
+            resize:none;
+            outline:none;
+            padding-left: 0.15rem;
+            padding-top: 0.15rem;
+        }
+
+        .upfile {
+            position: relative;
+            width:1rem;
+            height:1rem;
+            border:1px solid #ccc;
+            margin-left:0.1rem;
+            padding-top: 0.25rem;
+            text-align: center;
+            float:left;
+            margin-top: 0.2rem;
+        }
+        .addimg {
+            display: block;
+            margin-left: 0.25rem;
+            margin-bottom: 0.1rem;
+        }
+        .file{
+            position: absolute;
+            top:0;
+            left:0;
+            opacity:0;
+            width: 1rem;
+            height: 1rem;
+        }
+        #photo-box div{
+            float: left;
+            width: 31%;
+            height: 1rem;
+            margin-top:0.2rem;
+            margin-left:0.08rem;
+        }
+        /*新增*/
+        .header {
+            width: 100%;
+            height:0.4rem;
+            border-bottom: 1px solid #d9d9d9;
+            text-align: center;
+            background-color: #fff;
+        }
+        .header span ,.header input{
+            height:0.35rem;
+            line-height: 0.35rem;
+            display: inline-block;
+            font-size:0.14rem;
+        }
+        .header input {
+            float:right;
+            margin-right: 0.15rem;
+            background-color: #fff;
+            border: none;
+            outline: none;
+        }
+
+        .upfile {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+    .file-top {
+        width: 100%;
+        /*height: 2rem;*/
+        background-color: #fff;
+    }
+    #photo-box div {
+        margin-top: 0.2rem;
+    }
+    #photo-box img {
+        width: 1rem;
+        height: 1rem;
+    }
+    .filebox {
+        overflow: wrap;
+        padding-bottom: 0.2rem;
+    }
+    .kong {
+        width: 100%;
+        height:2rem;
+        background-color: #f2f2f2;
+    }
+    .clear {
+        clear:both;
+    }
+    </style>
+</head>
+<body>
+<form action="">
+        <div class="header">
+            <span>发表帖子</span>
+            <input type="submit" class="submit" value="发布">
+        </div>
+        <div class="box">
+            <textarea name="" id="" cols="" rows=""
+            placeholder="分享新鲜事..."></textarea>
+        </div>
+        <div id="photo-box">
+        </div>
+        <div class="filebox">
+            <div class="file-top">
+                <div class="upfile">
+                    <img class="addimg" src="./images/addpicture.jpg" alt="">
+                    <span>添加图片</span>
+                    <input type="file" multiple="multiple" class="file" id="upfile">
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="kong"></div>
+    </form>
+    <script src="./js/mobblie.js"></script>
+    <script src="./js/rem.js"></script>
+    <script src="./js/jquery-1.11.1.min.js"></script>
+    <script>
+        document.getElementById("upfile").addEventListener("change",function(){
+            var files = this.files;
+            var oUL = document.getElementById("photo-box");
+            oUL.innerHTML = "";
+            for(var i = 0;i < files.length;i++){
+                oUL.innerHTML += '<div><img id="img'+i+'" /></div>'
+                var imgList = document.getElementById("img"+i);
+                imgList.style.height = "100%";
+                imgList.style.width = "100%";
+                imgList.src = window.URL.createObjectURL(files[i]);
+            }
+        });
+    </script>
+</body>
+</body>
+</html>
